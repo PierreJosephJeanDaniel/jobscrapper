@@ -1,2 +1,2 @@
 # jobscrapper
-A project of web scrapping focussed on job search portails
+A project of web scrapping focused on job search portails
