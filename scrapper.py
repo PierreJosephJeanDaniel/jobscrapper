@@ -1,3 +1,5 @@
+# %%
+
 from bs4 import BeautifulSoup
 import requests
 
@@ -13,3 +15,24 @@ company = job1.find("span", {"class": "companyName"}).a.string
 
 print(job,company)
 
+
+# %%
+
+page = requests.get(url)
+doc = BeautifulSoup(page.text,'html.parser')
+offers = doc.select("[class = resultContent]")
+
+class Job_offer:
+
+    def __init__(self,offer):
+        self.job = offer.h2.a.span.string
+        try :
+            self.company = offer.find("span", {"class": "companyName"}).a.string
+        except:
+            self.company = offer.find("span", {"class": "companyName"}).string
+
+    def __repr__(self):
+        return str(self.job)
+
+l = [Job_offer(offer) for offer in offers]
+# %%
