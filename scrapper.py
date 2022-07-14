@@ -9,6 +9,7 @@ doc = BeautifulSoup(page.text,'html.parser')
 job_titles = doc.select("[class = resultContent]")
 job1 = job_titles[0]
 job = job1.h2.a.span.string
-company = job1.find_all("span")
-print(company[1].string)
+company = job1.find("span", {"class": "companyName"}).a.string
+
+print(job,company)
 
